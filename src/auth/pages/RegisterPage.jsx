@@ -1,0 +1,144 @@
+import { Button, Grid, Link, TextField, Typography } from "@mui/material"
+import {Link as RouterLink} from 'react-router-dom'
+import { AuthLayout } from "../layout/AuthLayout"
+import { useForm } from "../../hooks"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { startCreatingUserWithEmailAndPassword } from "../../store/auth"
+
+
+const formData = {
+  email: '',
+  password: '',
+  displayName: ''
+}
+
+const formValidations = {
+  email: [
+    (value)=>value.includes('@'), 
+    'el correo debe tener una @'
+  ],
+  password: [
+    (value)=>value.length >= 6, 
+    'el password debe tener mas de 6 letas'
+  ],
+  displayName: [
+    (value)=>value.length >= 1, 
+    'el nombre es obligatorio'
+  ]
+}
+
+export const RegisterPage = () => {
+
+  const [formSubmited, setFormSubmited] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const {formState, displayName, email, password, onInputChange, 
+        isFormValid, displayNameValid, emailValid, passwordValid} = useForm(formData, formValidations)
+  
+  // console.log(displayNameValid)
+        
+  const onSubmit = (event) => {
+
+    event.preventDefault();
+    setFormSubmited(true);
+    if(!isFormValid) return;
+ 
+    dispatch(startCreatingUserWithEmailAndPassword(formState));
+    // console.log(formState);
+
+  }
+
+  return (
+    <AuthLayout title="Crear cuenta">
+        <h1>Form: {isFormValid ? 'Válido' : 'No Válido'} </h1>
+        <form onSubmit={onSubmit}>
+          <Grid container>
+
+            <Grid 
+              item 
+              xs={12} 
+              sx={{mt:2}}>
+              <TextField 
+                label='Nombre'
+                type="text"
+                placeholder="John Doe"
+                fullWidth
+                name='displayName'
+                value={displayName}
+                onChange={onInputChange}
+                error={!!displayNameValid && formSubmited}
+                helperText={displayNameValid}
+              />
+            </Grid>
+
+            <Grid item xs={12} sx={{mt:2}}>
+              <TextField 
+                label='Correo'
+                type="email"
+                placeholder="ejemplo@google.com"
+                fullWidth
+                name='email'
+                value={email}
+                onChange={onInputChange}
+                error={!!emailValid && formSubmited}
+                helperText={emailValid}
+              />
+            </Grid>
+
+            <Grid item xs={12} sx={{mt:2}}>
+              <TextField 
+                label='Contraseña'
+                type="password"
+                placeholder="Contrseña"
+                fullWidth
+                name='password'
+                value={password}
+                onChange={onInputChange}
+                error={!!passwordValid && formSubmited}
+                helperText={passwordValid}
+              />
+            </Grid>
+
+            <Grid 
+              container
+              spacing={2}
+              sx={{mb: 2, mt: 1}}>
+              
+              <Grid 
+                item
+                xs={12}>
+                <Button 
+                  sx={{
+                    backgroundColor:'color5.main', 
+                    color: 'color3.main',
+                    ":hover": { 
+                      backgroundColor: 'color3.main', 
+                      color: 'color5.main' } }}
+                  variant='contained' 
+                  fullWidth
+                  type="submit"
+                >
+                  <Typography>Crear cuenta</Typography>
+                </Button>
+              </Grid>
+
+            </Grid>
+
+            <Grid 
+              container
+              direction='row'
+              justifyContent='end'>
+                <Typography sx={{mr: 1}}>¿Ya tienes una cuenta?</Typography>
+              <Link component={RouterLink} color='inherit' to='/auth/login'>
+                Ingresar
+              </Link>
+            </Grid>
+
+          </Grid>
+        </form>  
+        
+    </AuthLayout>
+  )
+}
