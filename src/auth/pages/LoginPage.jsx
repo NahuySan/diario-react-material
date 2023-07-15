@@ -134,6 +134,18 @@ export const LoginPage = () => {
 
           </Grid>
         </form>  
+        <Link 
+                sx={{
+                  ":hover": { 
+                    color: 'color5.main' } 
+                }}
+                component={RouterLink} 
+                fontSize='14px' 
+                underline='none' 
+                color='color4.main' 
+                to='/'>
+                Post login -para probar-
+              </Link>                
         
     </AuthLayout>
   )

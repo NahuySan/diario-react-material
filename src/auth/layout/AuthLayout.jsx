@@ -11,7 +11,7 @@ export const AuthLayout = ({children, title = ''}) => {
       justifyContent='center'
       sx={{
         minHeight: '100vh', 
-        backgroundImage: `url(${'../../../public/img/journal.webp'})`,
+        backgroundImage: `url(${'../../../img/Journal.webp'})`,
         // backgroundColor: 'white',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
