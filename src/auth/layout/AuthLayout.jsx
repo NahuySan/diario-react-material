@@ -8,7 +8,7 @@ export const AuthLayout = ({children, title = ''}) => {
       spacing={0} 
       direction='column'
       alignItems='center'
-      justifyContent='center'
+      justifyContent='space-around'
       sx={{
         minHeight: '100vh', 
         backgroundImage: `url(${'../../../img/Journal.webp'})`,
@@ -17,7 +17,24 @@ export const AuthLayout = ({children, title = ''}) => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         }}>
-      <Typography>Journapp</Typography>
+
+      <Grid
+        item
+
+      >
+        <Typography 
+          variant="h1"
+          sx={{
+            ml: 'calc(100% - 50px)',
+            color: 'color5.main',
+            textShadow: '3px 3px 3px rgba(0, 0, 0, 0.3)'            
+          }}  
+        >
+        Journapp
+        </Typography>
+      </Grid>   
+
+
       <Grid
         item
         className="box-shadow"

@@ -37,12 +37,16 @@ export const LoginPage = () => {
         <form 
           onSubmit={ onSubmit }
           className="animate__animated animate__fadeIn"
-
+          sx={{
+            pb:20
+          }} 
         >
           <Grid 
             container
-            zIndex={1}>
-            
+            zIndex={1}
+ 
+          >
+ 
             <Grid item xs={12} sx={{mt:2,}}>
               <TextField
                 name='email'
@@ -153,19 +157,7 @@ export const LoginPage = () => {
             </Grid>
 
           </Grid>
-        </form>  
-        <Link 
-                sx={{
-                  ":hover": { 
-                    color: 'color5.main' } 
-                }}
-                component={RouterLink} 
-                fontSize='14px' 
-                underline='none' 
-                color='color4.main' 
-                to='/journal'>
-                Post login -para probar-
-              </Link>                
+        </form>               
         
     </AuthLayout>
   )
