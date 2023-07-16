@@ -143,7 +143,7 @@ export const LoginPage = () => {
                 fontSize='14px' 
                 underline='none' 
                 color='color4.main' 
-                to='/'>
+                to='/journal'>
                 Post login -para probar-
               </Link>                
         
