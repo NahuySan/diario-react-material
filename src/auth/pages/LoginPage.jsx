@@ -1,39 +1,44 @@
 import { useMemo } from "react"
 import {Link as RouterLink} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import { Button, Grid, Link, TextField, Typography } from "@mui/material"
+import { Alert, Button, Grid, Link, TextField, Typography } from "@mui/material"
 import { Google } from "@mui/icons-material"
-import { checkingAuth, startGoogleSignIn } from "../../store/auth"
+import { startGoogleSignIn, startLoginWithEmailAndPassword } from "../../store/auth"
 import { AuthLayout } from "../layout/AuthLayout"
 import { useForm } from "../../hooks"
 
 
 export const LoginPage = () => {
 
-  const {status} = useSelector(state => state.auth)
 
-  const dispatch = useDispatch()
+  const {status, errorMessage} = useSelector(state => state.auth)
+
+  const dispatch = useDispatch();
+  
   const {email, password, onInputChange} = useForm({
-    email: 'hola@gmail.com',
-    password: '123456',
+    email: '',
+    password: '',
   })
 
   const isAuthenticating = useMemo(()=> status === 'checking', [status]);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // console.log({email, password})
-    dispatch(checkingAuth())      
+    dispatch(startLoginWithEmailAndPassword({email, password}))      
   }
 
   const onGoogleSignIn = () => {
-    console.log('onGoogleSignIn');
+    // console.log('onGoogleSignIn');
     dispatch(startGoogleSignIn());
   }
 
   return (
     <AuthLayout title="Login">
-        <form onSubmit={ onSubmit }>
+        <form 
+          onSubmit={ onSubmit }
+          className="animate__animated animate__fadeIn"
+
+        >
           <Grid 
             container
             zIndex={1}>
@@ -68,6 +73,20 @@ export const LoginPage = () => {
               
               <Grid 
                 item
+                xs={12}
+                display={!!errorMessage ? '' : 'none'}
+              >
+                <Alert 
+                  severity="error"
+                  sx={{
+                  backgroundColor: 'transparent'
+                  }}
+                >
+                {errorMessage}                  
+                </Alert>
+              </Grid>
+              <Grid 
+                item
                 xs={12} sm={6}>
                 <Button
                   disabled={isAuthenticating}                
@@ -80,6 +99,7 @@ export const LoginPage = () => {
                   variant='contained' 
                   fullWidth
                   type='submit'
+
                 >
                   <Typography>Login</Typography>
                 </Button>

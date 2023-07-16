@@ -1,7 +1,20 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material"
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material"
+import { useDispatch, useSelector } from "react-redux"
+import { startLogout } from "../../store/auth/thunks";
 
 export const NavBar = ({drawerWidth = 240}) => {
+  
+  const dispatch = useDispatch();
+
+
+
+  const onLogout = () => {
+
+    dispatch(startLogout());
+
+  }
+  
   return (
     <AppBar
       
@@ -42,7 +55,9 @@ export const NavBar = ({drawerWidth = 240}) => {
           </Typography>
 
           <IconButton 
-            color='color3.main'>
+            color='color3.main'
+            onClick={onLogout}
+          >
             <LogoutOutlined />
           </IconButton>
 

@@ -6,8 +6,8 @@ import { NoteView, NothingSelectedView } from '../views';
 export const JournalRoutes = () => {
   return (
     <Routes>
-      <Route path='/journal' element={<NothingSelectedView /> } />
-      <Route path='/' element={<Navigate to='/' /> } />
+      <Route path='/' element={<JournalPage /> } />
+      <Route path='/*' element={<Navigate to='/' /> } />
     </Routes>
   )
 }

@@ -1,9 +1,9 @@
-import { Button, Grid, Link, TextField, Typography } from "@mui/material"
+import { Alert, Button, Grid, Link, TextField, Typography } from "@mui/material"
 import {Link as RouterLink} from 'react-router-dom'
 import { AuthLayout } from "../layout/AuthLayout"
 import { useForm } from "../../hooks"
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useMemo, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { startCreatingUserWithEmailAndPassword } from "../../store/auth"
 
 
@@ -35,7 +35,13 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const {formState, displayName, email, password, onInputChange, 
-        isFormValid, displayNameValid, emailValid, passwordValid} = useForm(formData, formValidations)
+        isFormValid, displayNameValid, emailValid, passwordValid} = useForm(formData, formValidations);
+
+  const {status, errorMessage} = useSelector(state => state.auth);
+
+  const isCheckingAuthentication = useMemo( 
+    () => status === 'checking', [status]
+  );
   
   // console.log(displayNameValid)
         
@@ -52,8 +58,10 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Crear cuenta">
-        <h1>Form: {isFormValid ? 'Válido' : 'No Válido'} </h1>
-        <form onSubmit={onSubmit}>
+        <form 
+          onSubmit={onSubmit}
+          className="animate__animated animate__fadeIn"
+        >
           <Grid container>
 
             <Grid 
@@ -108,8 +116,23 @@ export const RegisterPage = () => {
               
               <Grid 
                 item
+                xs={12}
+                display={!!errorMessage ? '' : 'none'}                
+                >
+                <Alert
+                  severity="error"
+                  sx={{
+                    backgroundColor: 'transparent'
+                  }}
+                >
+                  {errorMessage}
+                </Alert>  
+              </Grid>
+              <Grid 
+                item
                 xs={12}>
                 <Button 
+                  disabled={isCheckingAuthentication}
                   sx={{
                     backgroundColor:'color5.main', 
                     color: 'color3.main',
