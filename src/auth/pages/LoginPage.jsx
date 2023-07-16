@@ -38,7 +38,7 @@ export const LoginPage = () => {
           onSubmit={ onSubmit }
           className="animate__animated animate__fadeIn"
           sx={{
-            pb:20
+            
           }} 
         >
           <Grid 
