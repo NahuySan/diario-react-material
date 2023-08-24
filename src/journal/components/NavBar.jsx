@@ -26,7 +26,7 @@ export const NavBar = ({drawerWidth = 240}) => {
         ml: {
           sm: `${drawerWidth}px`
         }, 
-        backgroundColor: 'color3.main'
+        backgroundColor: 'color5.main'
       }}>
         
       <Toolbar>
@@ -44,18 +44,30 @@ export const NavBar = ({drawerWidth = 240}) => {
           container 
           direction= 'row'
           justifyContent='space-between'
-          alignItems='center'>
+          alignItems='center'
+          sx={{
+            border: 'none'
+          }}
+          >
 
           <Typography 
             variant='h6' 
+            fontWeight='300'
             noWrap 
             component='div'
-            color='color2.main'>
-            JournalApp
+            color='color3.main'>
+            Journapp
           </Typography>
 
           <IconButton 
-            color='color3.main'
+            sx={{
+            color: 'color3.main',
+            ":hover": { 
+              backgroundColor: 'transparent', 
+              color: 'color1.main' 
+              
+            }         
+            }}
             onClick={onLogout}
           >
             <LogoutOutlined />

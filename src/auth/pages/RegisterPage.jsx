@@ -153,9 +153,30 @@ export const RegisterPage = () => {
               container
               direction='row'
               justifyContent='end'>
-                <Typography sx={{mr: 1}}>¿Ya tienes una cuenta?</Typography>
-              <Link component={RouterLink} color='inherit' to='/auth/login'>
+                <Typography 
+                  color='color5.main'
+                  sx={{
+                    mr: 1,
+                    fontSize: 14}}                
+                >
+                  ¿Ya tienes una cuenta?
+                </Typography>
+
+              <Link 
+                component={RouterLink} 
+                to='/auth/login'
+                sx={{
+                  color: 'color1.main',
+                  ":hover": { 
+                    color: 'color5.main' } 
+                }}
+                fontSize='14px' 
+                underline='none' 
+                color='color4.main'               
+              >
+
                 Ingresar
+
               </Link>
             </Grid>
 

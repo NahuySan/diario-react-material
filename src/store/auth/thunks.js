@@ -4,6 +4,7 @@ import {
   registerUserWithEmailAndPassword, 
   signInWithGoole 
 } from "../../firebase/providers";
+import { clearStoreLogout } from "../journal/journalSlice";
 
 import { 
   checkingCredentials, 
@@ -70,6 +71,8 @@ export const startLogout = () => {
     await logoutFirebase();
 
     dispatch(logout());
+
+    dispatch( clearStoreLogout() );
 
   }
 

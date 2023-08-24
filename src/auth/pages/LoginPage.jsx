@@ -8,6 +8,11 @@ import { AuthLayout } from "../layout/AuthLayout"
 import { useForm } from "../../hooks"
 
 
+const formData = {
+  email: '',
+  password: '',
+};
+
 export const LoginPage = () => {
 
 
@@ -15,10 +20,7 @@ export const LoginPage = () => {
 
   const dispatch = useDispatch();
   
-  const {email, password, onInputChange} = useForm({
-    email: '',
-    password: '',
-  })
+  const {email, password, onInputChange} = useForm( formData );
 
   const isAuthenticating = useMemo(()=> status === 'checking', [status]);
 
@@ -33,7 +35,10 @@ export const LoginPage = () => {
   }
 
   return (
-    <AuthLayout title="Login">
+    <AuthLayout 
+      title="Login"
+      
+      >
         <form 
           onSubmit={ onSubmit }
           className="animate__animated animate__fadeIn"
@@ -66,7 +71,7 @@ export const LoginPage = () => {
                 value={password}              
                 label='Contraseña'
                 type="password"
-                placeholder="Contrseña"
+                placeholder="Ingrese su contraseña"
                 fullWidth/>
             </Grid>
 
@@ -144,6 +149,7 @@ export const LoginPage = () => {
                 </Typography>
               <Link 
                 sx={{
+                  color: 'color1.main',
                   ":hover": { 
                     color: 'color5.main' } 
                 }}

@@ -8,13 +8,16 @@ export const JournalLayout = ({children}) => {
   return (
     <Box 
       sx={{
-        display: 'flex'
+        display: 'flex',
+        backgroundColor: 'color3.main',
       }}
       className="animate__animated animate__fadeIn"
       >
       
       <NavBar drawerWidth={drawerWidth} />
-      <SideBar drawerWidth={drawerWidth} />
+      <SideBar 
+        
+        drawerWidth={drawerWidth} />
 
       <Box 
         component='main'   

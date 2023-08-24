@@ -18,7 +18,7 @@ export const NothingSelectedView = () => {
         // backgroundSize: 'cover',
         // backgroundPosition: 'center',
         border: '2px solid',
-        borderColor:'color5.main',
+        borderColor:'color2.main',
         borderRadius: 5
         }}>
 
@@ -29,7 +29,7 @@ export const NothingSelectedView = () => {
       <EventNoteOutlined
           sx={{
             fontSize:80, 
-            color:'color2.main'
+            color:'color5.main'
         }}
       />      
   
@@ -43,7 +43,7 @@ export const NothingSelectedView = () => {
         color='color5.main'
         variant='p'
         sx={{
-          fontWeight:600,
+          fontWeight:500,
           fontFamily: 'montserrat'
         }}
       >

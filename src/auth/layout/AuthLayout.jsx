@@ -8,11 +8,11 @@ export const AuthLayout = ({children, title = ''}) => {
       spacing={0} 
       direction='column'
       alignItems='center'
-      justifyContent='space-around'
+      justifyContent='center'
       sx={{
         minHeight: '100vh', 
-        backgroundImage: `url(${'../../../img/Journal.webp'})`,
-        // backgroundColor: 'white',
+        background: 'rgb(182,191,145)',
+        background: 'linear-gradient(90deg, rgba(182,191,145,1) 9%, rgba(249,244,227,1) 100%)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -20,17 +20,28 @@ export const AuthLayout = ({children, title = ''}) => {
 
       <Grid
         item
-
       >
         <Typography 
-          variant="h1"
+          variant="h2"
           sx={{
-            ml: 'calc(100% - 50px)',
+            fontWeight: 200,
             color: 'color5.main',
-            textShadow: '3px 3px 3px rgba(0, 0, 0, 0.3)'            
+            textShadow: '4px 4px 4px rgba(0, 0, 0, 0.2)',
+            mb: -1            
           }}  
         >
         Journapp
+        </Typography>
+        <Typography 
+          variant="h6"
+          sx={{
+            fontWeight: 300,
+            color: 'color5.main',
+            textShadow: '4px 4px 4px rgba(0, 0, 0, 0.2)',
+            pb: 2,            
+          }}  
+        >
+        Diario digital
         </Typography>
       </Grid>   
 
@@ -39,17 +50,14 @@ export const AuthLayout = ({children, title = ''}) => {
         item
         className="box-shadow"
         xs={3}
-        zIndex={0}
         position='relative'
         sx={{
           width: {sm: 450},
           backgroundColor: 'transparent', 
           padding: 3, 
           border: '2px solid',
-          borderColor: 'color1.main',
-          borderRadius: 0,
-          zIndex: 'zIndex.appBar',
-          position: 'relative'
+          borderColor: 'color5.main',
+          position: 'relative',
           }} >
           
         <Typography 
@@ -57,8 +65,7 @@ export const AuthLayout = ({children, title = ''}) => {
           position='relative' 
           sx={{
             mb: 1, 
-            color: 'color3.main', 
-            zIndex: 'zIndex.drawer', 
+            color: 'color5.main', 
             position: 'relative'}}>
           {title}
         </Typography>

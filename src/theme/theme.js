@@ -4,20 +4,20 @@ import { red } from "@mui/material/colors";
 export const theme = createTheme({
   palette: {
     color1: {
-      main: '#6f748f',
+      main: '#b0b087',
       
     },
     color2: {
-      main: '#b4b7c5'
+      main: '#58706d'
     },
     color3: {
-      main: '#393c4a'
+      main: '#e3e3d1'
     },
     color4: {
-      main: '#6c749c'
+      main: '#4b5757'
     },
     color5: {
-      main: '#b4b7c5'
+      main: '#7c8a6e'
     },
     error: {
       main: red.A400
@@ -31,17 +31,20 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           "& label.Mui-focused": {
-            color: '#393c4a',
+            color: '#7c8a6e',
           },
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
-              borderColor: '#6f748f',
+              borderColor: '#b0b087',
             },
             "&:hover fieldset": {
-              borderColor: '#b4b7c5',
+              borderColor: '#7c8a6e',
             },
             "&.Mui-focused fieldset": {
-              borderColor: '#b4b7c5',
+              borderColor: '#7c8a6e',
+            },
+            "& input": {
+              color: '#7c8a6e',
             },
           },
         },
